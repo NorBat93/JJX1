@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uczelnia  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <wydzial>
+        <id>asdw</id>
+        <nazwa>Matematyki</nazwa>
+        <adres>
+            <ulica>Uczelniana 12</ulica>
+            <numer>12</numer>
+            <kod_pocztowy>60-606</kod_pocztowy>
+            <miejscowosc>Testowa</miejscowosc>
+        </adres>
+        <pracownicy>
+            <pracownik>
+                <id_pracownika>M0001</id_pracownika>
+                <imie>Norbert</imie>
+                <nazwisko>W</nazwisko>
+                <tytul>inż</tytul>
+                <kategoria>naukowy</kategoria>
+            </pracownik>
+            <pracownik>
+                <id_pracownika>M0002</id_pracownika>
+                <imie>Adrian</imie>
+                <nazwisko>D</nazwisko>
+                <tytul>inż</tytul>
+                <kategoria>naukowy</kategoria>
+            </pracownik>
+        </pracownicy>
+        <przedmioty>
+            <kod_przedmiotu>MIZ20</kod_przedmiotu>
+            <nazwa>Informatyka</nazwa>
+            <opis>Zajeca z Delphi</opis>
+            <liczba_uczestnikow>52</liczba_uczestnikow>
+            <prowadzacy>
+                <id_pracownika>M0002</id_pracownika>
+            </prowadzacy>
+        </przedmioty>
+        
+    </wydzial> 
+</uczelnia>
+  

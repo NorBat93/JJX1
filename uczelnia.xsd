@@ -4,27 +4,35 @@ targetNamespace="https://www.w3schools.com"
 xmlns="https://www.w3schools.com"
 elementFormDefault="qualified">
 
+<xs:element name="uczelnia">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="wydzial"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
 <xs:element name="wydzial">
     <xs:complexType>
         <xs:sequence>
             <xs:element name="id" type="xs:ID"/>
             <xs:element name="nazwa" type="xs:string"/>
             <xs:element ref="adres"/>
-            <xs:element ref="pracownicy"/>
+            <xs:element ref="pracownicy"  maxOccurs="1"/>
             <xs:element ref="przedmioty" />
         </xs:sequence>
     </xs:complexType>
 </xs:element>
 
-<xs:element name="pracownicy" maxOccurs="1">
+<xs:element name="pracownicy">
     <xs:complexType>
         <xs:sequence>
-            <xs:element ref="pracownik"/>
+            <xs:element ref="pracownik"  maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
 
-<xs:element name="pracownik" maxOccurs="unbounded">
+<xs:element name="pracownik">
     <xs:complexType>
         <xs:sequence>
             <xs:element name="id_pracownika" type="xs:ID"/>
@@ -52,13 +60,13 @@ elementFormDefault="qualified">
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element ref="adres"/>
+            <xs:element ref="adres" maxOccurs="unbounded" minOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
 
 
-<xs:element name="adres" maxOccurs="unbounded" minOccurs="1">
+<xs:element name="adres" >
     <xs:complexType>
         <xs:sequence>
             <xs:element name="ulica" type="xs:string"/>
@@ -87,12 +95,11 @@ elementFormDefault="qualified">
             <xs:element name="liczba_uczestnikow">
                 <xs:simpleType>
                     <xs:restriction base="xs:positiveInteger">
-                        <xs:maxInclusive value="6"/>
-                        <xs:minInclusive value="400"/>
+                        <xs:maxInclusive value="400"/>
+                        <xs:minInclusive value="6"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="miejscowosc" type="xs:string"/>
             <xs:element name="prowadzacy" minOccurs="1">
                 <xs:complexType>
                     <xs:sequence>
