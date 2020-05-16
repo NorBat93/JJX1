@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="https://www.w3schools.com"
+xmlns="https://www.w3schools.com"
+elementFormDefault="qualified">
+
+<xs:element name="wydzial">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="id" type="xs:ID"/>
+            <xs:element name="nazwa" type="xs:string"/>
+            <xs:element ref="adres"/>
+            <xs:element ref="pracownicy"/>
+            <xs:element ref="przedmioty" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="pracownicy" maxOccurs="1">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="pracownik"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="pracownik" maxOccurs="unbounded">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="id_pracownika" type="xs:ID"/>
+            <xs:element name="imie">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="nazwisko">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="tytul" type="xs:string"/>
+            <xs:element name="kategoria">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="naukowy"/>
+                        <xs:enumeration value="administracyjny"/>
+                        <xs:enumeration value="techniczny"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element ref="adres"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+<xs:element name="adres" maxOccurs="unbounded" minOccurs="1">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="ulica" type="xs:string"/>
+            <xs:element name="numer" type="xs:string"/>
+            <xs:element name="kod_pocztowy">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="6"/>
+                        <xs:maxLength value="6"/>
+                        <xs:pattern value="\d{2}-\d{3}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="miejscowosc" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+<xs:element name="przedmioty">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="kod_przedmiotu" type="xs:string"/>
+            <xs:element name="nazwa" type="xs:string"/>
+            <xs:element name="opis" type="xs:string"/>
+            <xs:element name="liczba_uczestnikow">
+                <xs:simpleType>
+                    <xs:restriction base="xs:positiveInteger">
+                        <xs:maxInclusive value="6"/>
+                        <xs:minInclusive value="400"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="miejscowosc" type="xs:string"/>
+            <xs:element name="prowadzacy" minOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id_pracownika" type="xs:IDREF" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+</xs:schema>
