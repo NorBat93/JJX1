@@ -1,2 +1,2 @@
-# JJX1
+# JJXZ1
 Zadanie 1 - JJX
